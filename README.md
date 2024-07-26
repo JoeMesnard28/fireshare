@@ -282,3 +282,14 @@ If you are experiencing playback issues there could be a number of reasons as to
 [ogg-data]: .github/images/ogg-data.png
 [mobile-view]: .github/images/mobile-view.png
 [uploading]: .github/images/uploading.png
+
+# personal note
+
+The dockerfile was not copying the nginx/prod.conf over correctly, so I had to do the following
+
+```
+docker cp path/to/prod.conf fireshare:/etc/nginx/nginx.conf
+docker exec -it fireshare /bin/sh
+# note cat here to make sure it worked
+nginx -s reload
+```
